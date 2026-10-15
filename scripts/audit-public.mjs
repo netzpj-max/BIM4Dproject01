@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {gunzipSync} from 'node:zlib';
 import {fileURLToPath} from 'node:url';
 
 const root=fileURLToPath(new URL('../docs/',import.meta.url));
@@ -8,10 +9,10 @@ const registry=JSON.parse(fs.readFileSync(path.join(root,'drawings.json'),'utf8'
 const model=JSON.parse(fs.readFileSync(path.join(root,'model.json'),'utf8'));
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const app=fs.readFileSync(path.join(root,'app.js'),'utf8');
-const allowed=new Set(['.html','.js','.css','.json','.png','.jpg','.ttf','.txt','']);
+const allowed=new Set(['.html','.js','.css','.json','.png','.jpg','.ttf','.txt','.gz','']);
 function walk(folder){return fs.readdirSync(folder,{withFileTypes:true}).flatMap(item=>item.isDirectory()?walk(path.join(folder,item.name)):[path.join(folder,item.name)]);}
 const published=walk(root);
-const rootFiles=new Set(['.nojekyll','index.html','app.js','branding.js','ifc-export.js','model.json','drawings.json','verification.json','style.css','studio.css','public-guide.html']);
+const rootFiles=new Set(['.nojekyll','index.html','app.js','app.bundle.js','branding.js','ifc-export.js','model.json','model.json.gz','drawings.json','verification.json','style.css','studio.css','public-guide.html']);
 const assets=new Set(['NotoSansThai-UI-OFL.txt','NotoSansThai-UI-variable.ttf','npairender-icon.png']);
 const vendor=new Set(['LICENSE','OrbitControls.js','three.core.js','three.module.js']);
 for(const file of published){
@@ -25,6 +26,7 @@ const pageKeys=new Set(['id','file','page','discipline','sheetNumber','displayTi
 const fileKeys=new Set(['id','name','type','discipline','pageCount']);
 for(const file of registry.files)assert(Object.keys(file).every(key=>fileKeys.has(key)),'Raw file metadata leaked');
 const ids=new Set();
+assert.deepEqual(gunzipSync(fs.readFileSync(path.join(root,'model.json.gz'))),fs.readFileSync(path.join(root,'model.json')),'Compressed model must preserve every byte of model data');
 function jpegSize(data){
  let index=2;
  while(index<data.length){
