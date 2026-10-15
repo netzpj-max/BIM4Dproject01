@@ -5,3 +5,14 @@ node_modules/
 .env.*
 qa/
 *.log
+*.pdf
+*.dwg
+*.dxf
+*.pln
+*.pla
+*.ifc
+*.zip
+originals/
+archives/
+downloads/
+drawings/

@@ -2,6 +2,8 @@
 
 เว็บดูโมเดล **อาคารห้องพัก 4 ชั้น** พร้อมแดชบอร์ด ข้อมูลชิ้นส่วน แผนก่อสร้าง 4D ปริมาณ และต้นทุน ในสไตล์ NPAiRENDER Studio
 
+[เปิดเว็บสาธารณะ](https://netzpj-max.github.io/BIM4Dproject01/#model) · [คลังภาพย่อแบบ](https://netzpj-max.github.io/BIM4Dproject01/#drawings)
+
 ## เปิดในเครื่อง
 
 ต้องมี Node.js จากนั้นเปิดโฟลเดอร์นี้และใช้ `npm start` แล้วเข้า <http://127.0.0.1:4198/BIM4Dproject01/#model>
