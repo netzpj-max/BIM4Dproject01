@@ -1,0 +1,21 @@
+{
+  "schema": "IFC2X3",
+  "modelElements": 6517,
+  "ifcProductsWithGeometry": 6517,
+  "ifcTasks": 33,
+  "schemaErrors": [],
+  "geometryErrors": [],
+  "guidsMatch": true,
+  "testedAt": "2026-10-11",
+  "fullBIMComplete": false,
+  "scope": "R01 building envelope, stairs, roof and base completed for drawing review; fabrication and full MEP coverage still require verification",
+  "scheduleBasis": "proposed relative days 0-240; no actual schedule supplied",
+  "archicad": {
+    "apiConnected": true,
+    "version": 26,
+    "build": 4019,
+    "importTestPassed": false,
+    "nativePLNSaved": false,
+    "summary": "เชื่อมต่อ Archicad 26 ได้ แต่ระบบปฏิเสธการควบคุมหน้าต่าง จึงยังไม่ยืนยันการนำเข้า native และยังไม่มีไฟล์ PLN ที่ตรวจแล้ว"
+  }
+}
